@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bumbu Bubur Pedas Nek Na - Praktis & Lezat</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #0056b3;
+            --accent-yellow: #f1c40f;
+            --dark-text: #333;
+            --light-bg: #f8f9fa;
+            --white: #ffffff;
+            --danger: #e74c3c;
+            --hero-btn-color: #f1c40f; 
+            --dark-brown: #3e2716;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-text);
+            background-color: var(--light-bg);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: auto;
+            padding: 60px 0;
+        }
+
+        /* --- HERO SECTION --- */
+        header.hero-section {
+            width: 100%;
+            aspect-ratio: 16 / 9; 
+            background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), 
+                              url('https://i.ibb.co.com/TD6VL0QQ/Gemini-Generated-Image-awcr36awcr36awcr.png'); 
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            display: flex;
+            align-items: flex-end; 
+            justify-content: center;
+            padding-bottom: 4%; 
+            position: relative;
+        }
+
+        /* --- STYLE TOMBOL CTA (DESKTOP) --- */
+        .btn-cta {
+            background-color: var(--accent-yellow);
+            color: var(--dark-brown);
+            padding: 1.2% 4%;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: clamp(0.9rem, 2vw, 1.2rem); 
+            text-transform: uppercase;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.25);
+            transition: 0.3s;
+            border: 2px solid var(--white);
+            display: inline-block;
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        .btn-cta:hover {
+            transform: translateY(-3px);
+            background-color: var(--white);
+        }
+
+        .text-center { text-align: center; margin-top: 40px; }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.2rem;
+            color: var(--primary-blue);
+            font-weight: 600;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 35px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+
+        .feature-card h3 { color: var(--primary-blue); margin: 15px 0; }
+
+        .cooking-section {
+            background: #eef2f7;
+            border-radius: 50px;
+            padding: 80px 20px;
+            margin: 40px 0;
+        }
+
+        .cooking-box {
+            background: var(--white);
+            border-radius: 25px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .step {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            padding: 15px;
+            background: #f9f9f9;
+            border-radius: 15px;
+        }
+
+        .step-num {
+            background: var(--primary-blue);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+
+        .promo-area {
+            background: var(--danger);
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+            border-radius: 35px;
+        }
+
+        .new-price {
+            font-size: clamp(2.5rem, 10vw, 4rem);
+            font-weight: 900;
+            color: var(--accent-yellow);
+            display: block;
+            margin: 10px 0;
+        }
+
+        #timer {
+            font-size: 2rem;
+            font-weight: 800;
+            background: rgba(0,0,0,0.3);
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+        }
+
+        .form-container {
+            background: white;
+            padding: 40px;
+            border-radius: 30px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+        }
+
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; margin-bottom: 8px; font-weight: 600; }
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 16px;
+            border: 2px solid #eee;
+            border-radius: 15px;
+            font-size: 1rem;
+        }
+
+        .btn-submit {
+            width: 100%;
+            background: #25d366;
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            border: none;
+            font-size: 1.2rem;
+            font-weight: 800;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .btn-shopee {
+            display: block;
+            width: 100%;
+            background: #ee4d2d; /* Warna Oranye Shopee */
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 800;
+            text-align: center;
+            margin-top: 15px;
+            transition: 0.3s;
+            border: none;
+        }
+
+.btn-shopee:hover {
+            background: #ff5722;
+            transform: scale(1.02);
+        }
+
+        .btn-submit:hover { background: #1eb954; transform: scale(1.02); }
+
+        /* --- MOBILE ADJUSTMENT (BAGIAN YANG DIPERBARUI) --- */
+/* --- MOBILE ADJUSTMENT (VERSI DIPERKECIL) --- */
+@media (max-width: 500px) {
+    .btn-cta {
+        padding: 12px 24px;       /* Ukuran padding lebih kecil & proporsional */
+        font-size: 0.9rem;        /* Ukuran font disesuaikan */
+        width: auto;              /* Tombol tidak lagi memenuhi lebar layar */
+        display: inline-block;    /* Memastikan tombol mengikuti lebar teks */
+        white-space: nowrap;      /* Menjaga teks tetap satu baris */
+        line-height: 1.4;
+    }
+    
+    .container { padding: 40px 0; }
+    .section-title { font-size: 1.6rem; }
+    .cooking-section { border-radius: 20px; padding: 40px 15px; }
+    .form-container { padding: 25px; }
+    .new-price { font-size: 2.2rem; }
+}
+        }
+    </style>
+</head>
+<body>
+
+    <header class="hero-section">
+        <a href="#order-form" class="btn-cta">BELI SEKARANG</a>
+    </header>
+
+    <section class="container">
+        <h2 class="section-title">Mengapa Harus Bumbu Nek Na?</h2>
+        <div class="features">
+            <div class="feature-card">
+                <span style="font-size: 50px;">🌿</span>
+                <h3>Rempah Alami</h3>
+                <p>Dibuat dari campuran rempah asli pilihan</p> 
+                <p>tanpa bahan pengawet.</p>
+            </div>
+            <div class="feature-card">
+                <span style="font-size: 50px;">⚡</span>
+                <h3>Super Praktis</h3>
+                <p>Masak Bubur Pedas khas Kalimantan Barat</p>
+                <kini>kini tidak perlu ribet sangrai beras lagi.</p>
+            </div>
+            <div class="feature-card">
+                <span style="font-size: 50px;">😋</span>
+                <h3>Rasa Juara</h3>
+                <p>Kelezatan autentik yang bikin ketagihan,</p>
+                <p>sama seperti makan di tempat asalnya.</p>
+            </div>
+        </div>
+        <div class="text-center">
+            <a href="#order-form" class="btn-cta">SAYA MAU PESAN SEKARANG</a>
+        </div>
+    </section>
+
+    <section class="cooking-section">
+        <div class="container">
+            <h2 class="section-title">Cara Masak Simpel</h2>
+            <div class="cooking-box">
+                <div class="step">
+                    <div class="step-num">1</div>
+                    <p>Didihkan air di dalam panci (sekitar 1-1.5 liter).</p>
+                </div>
+                <div class="step">
+                    <div class="step-num">2</div>
+                    <p>Masukkan 1 bungkus Bumbu Bubur Pedas Nex Na, aduk rata.</p>
+                </div>
+                <div class="step">
+                    <div class="step-num">3</div>
+                    <p>Tambahkan sayuran (kangkung, ubi, pakis) sesuai selera.</p>
+                </div>
+                <div class="step">
+                    <div class="step-num">4</div>
+                    <p>Masak hingga matang dan sajikan dengan kacang & teri goreng.</p>
+                </div>
+            </div>
+            <div class="text-center">
+                <a href="#order-form" class="btn-cta">COBA MASAK DI RUMAH</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="container">
+        <div class="promo-area">
+            <h2>🔥 PENAWARAN SPESIAL HARI INI 🔥</h2>
+            <span class="new-price">Rp 25.000 / bungkus</span>
+            <p style="margin-bottom: 10px;">Harga Normal: <del>Rp 45.000</del></p>
+            <div id="timer">10:00:00</div>
+            <div class="text-center" style="margin-top: 10px;">
+                <a href="#order-form" class="btn-cta" style="background: white; border-color: var(--accent-yellow);">AMBIL PROMO SEKARANG</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="order-form" class="container">
+        <h2 class="section-title">Formulir Pemesanan</h2>
+        <div class="form-container">
+            <form id="orderForm">
+             <div class="form-group">
+                <label>Nama Lengkap</label>
+                <input type="text" id="nama" placeholder="Masukkan nama Anda" required>
+            </div>
+            <div class="form-group">
+                <label>Nomor WhatsApp</label>
+                <input type="tel" id="wa" placeholder="Contoh: 0812345678" required>
+             </div>
+            <div class="form-group">
+                <label>Alamat Pengiriman</label>
+                <textarea id="alamat" rows="3" placeholder="Tulis alamat lengkap Anda" required></textarea>
+            </div>
+            <div class="form-group">
+                <label>Jumlah Order (pcs)</label>
+                <input type="number" id="jumlah" min="1" value="1" required>
+            </div>
+    
+        <button type="submit" class="btn-submit">🛒 PESAN VIA WHATSAPP SEKARANG</button>
+    
+        <p style="text-align: center; margin: 15px 0; font-weight: 600; color: #666;">— ATAU —</p>
+
+        <a href="https://s.shopee.co.id/5q1TOoEz6l" target="_blank" class="btn-shopee">🧡 BELI LEWAT SHOPEE</a>
+    </form>
+        </div>
+    </section>
+
+    <footer style="text-align: center; padding: 50px; color: #999; font-size: 0.9rem;">
+        <p>&copy; 2025 Bumbu Bubur Pedas Nek Na. Khas Kalimantan Barat.</p>
+    </footer>
+
+    <script>
+        let seconds = 10 * 60 * 60;
+        const timerEl = document.getElementById('timer');
+        function updateTimer() {
+            let h = Math.floor(seconds / 3600);
+            let m = Math.floor((seconds % 3600) / 60);
+            let s = seconds % 60;
+            h = h < 10 ? '0' + h : h;
+            m = m < 10 ? '0' + m : m;
+            s = s < 10 ? '0' + s : s;
+            timerEl.innerHTML = `${h}:${m}:${s}`;
+            if (seconds > 0) seconds--;
+        }
+        setInterval(updateTimer, 1000);
+
+        document.getElementById('orderForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const phoneAdmin = "628123456789"; 
+            const nama = document.getElementById('nama').value;
+            const wa = document.getElementById('wa').value;
+            const alamat = document.getElementById('alamat').value;
+            const jumlah = document.getElementById('jumlah').value;
+            const pesan = 
+            `hallo kak, saya ${nama}, 
+            ingin beli bumbu burdas ${jumlah} pcs dong, 
+            bisa ngak ya diantar ke ${alamat}, 
+            nomor wa saya ${wa}`;
+            window.open(`https://wa.me/${6285228880988}?text=${encodeURIComponent(pesan)}`, '_blank');
+        });
+    </script>
+</body>
+</html>
