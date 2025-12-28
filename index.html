@@ -13,7 +13,6 @@
             --light-bg: #f8f9fa;
             --white: #ffffff;
             --danger: #e74c3c;
-            --hero-btn-color: #f1c40f; 
             --dark-brown: #3e2716;
         }
 
@@ -54,11 +53,11 @@
             position: relative;
         }
 
-        /* --- STYLE TOMBOL CTA (DESKTOP) --- */
+        /* --- STYLE TOMBOL CTA --- */
         .btn-cta {
             background-color: var(--accent-yellow);
             color: var(--dark-brown);
-            padding: 1.2% 4%;
+            padding: 15px 35px; /* Menggunakan PX agar lebih stabil */
             border-radius: 50px;
             text-decoration: none;
             font-weight: 800;
@@ -197,10 +196,13 @@
             cursor: pointer;
             transition: 0.3s;
         }
+
+        .btn-submit:hover { background: #1eb954; transform: scale(1.02); }
+
         .btn-shopee {
             display: block;
             width: 100%;
-            background: #ee4d2d; /* Warna Oranye Shopee */
+            background: #ee4d2d;
             color: white;
             padding: 20px;
             border-radius: 15px;
@@ -213,31 +215,26 @@
             border: none;
         }
 
-.btn-shopee:hover {
+        .btn-shopee:hover {
             background: #ff5722;
             transform: scale(1.02);
         }
 
-        .btn-submit:hover { background: #1eb954; transform: scale(1.02); }
-
-        /* --- MOBILE ADJUSTMENT (BAGIAN YANG DIPERBARUI) --- */
-/* --- MOBILE ADJUSTMENT (VERSI DIPERKECIL) --- */
-@media (max-width: 500px) {
-    .btn-cta {
-        padding: 12px 24px;       /* Ukuran padding lebih kecil & proporsional */
-        font-size: 0.9rem;        /* Ukuran font disesuaikan */
-        width: auto;              /* Tombol tidak lagi memenuhi lebar layar */
-        display: inline-block;    /* Memastikan tombol mengikuti lebar teks */
-        white-space: nowrap;      /* Menjaga teks tetap satu baris */
-        line-height: 1.4;
-    }
-    
-    .container { padding: 40px 0; }
-    .section-title { font-size: 1.6rem; }
-    .cooking-section { border-radius: 20px; padding: 40px 15px; }
-    .form-container { padding: 25px; }
-    .new-price { font-size: 2.2rem; }
-}
+        /* --- MOBILE ADJUSTMENT --- */
+        @media (max-width: 500px) {
+            .btn-cta {
+                padding: 12px 24px;
+                font-size: 0.9rem;
+                width: auto;
+                display: inline-block;
+                white-space: nowrap;
+                line-height: 1.4;
+            }
+            .container { padding: 40px 0; }
+            .section-title { font-size: 1.6rem; }
+            .cooking-section { border-radius: 20px; padding: 40px 15px; }
+            .form-container { padding: 25px; }
+            .new-price { font-size: 2.2rem; }
         }
     </style>
 </head>
@@ -253,20 +250,17 @@
             <div class="feature-card">
                 <span style="font-size: 50px;">🌿</span>
                 <h3>Rempah Alami</h3>
-                <p>Dibuat dari campuran rempah asli pilihan</p> 
-                <p>tanpa bahan pengawet.</p>
+                <p>Dibuat dari campuran rempah asli pilihan tanpa bahan pengawet.</p>
             </div>
             <div class="feature-card">
                 <span style="font-size: 50px;">⚡</span>
                 <h3>Super Praktis</h3>
-                <p>Masak Bubur Pedas khas Kalimantan Barat</p>
-                <kini>kini tidak perlu ribet sangrai beras lagi.</p>
+                <p>Masak Bubur Pedas khas Kalimantan Barat kini tidak perlu ribet sangrai beras lagi.</p>
             </div>
             <div class="feature-card">
                 <span style="font-size: 50px;">😋</span>
                 <h3>Rasa Juara</h3>
-                <p>Kelezatan autentik yang bikin ketagihan,</p>
-                <p>sama seperti makan di tempat asalnya.</p>
+                <p>Kelezatan autentik yang bikin ketagihan, sama seperti makan di tempat asalnya.</p>
             </div>
         </div>
         <div class="text-center">
@@ -280,15 +274,15 @@
             <div class="cooking-box">
                 <div class="step">
                     <div class="step-num">1</div>
-                    <p>Didihkan air di dalam panci (sekitar 1-1.5 liter).</p>
+                    <p>Didihkan air di dalam panci (sekitar 1.5 - 2 liter).</p>
                 </div>
                 <div class="step">
                     <div class="step-num">2</div>
-                    <p>Masukkan 1 bungkus Bumbu Bubur Pedas Nex Na, aduk rata.</p>
+                    <p>Masukkan 1 bungkus Bumbu Bubur Pedas Nek Na, aduk rata hingga mengental.</p>
                 </div>
                 <div class="step">
                     <div class="step-num">3</div>
-                    <p>Tambahkan sayuran (kangkung, ubi, pakis) sesuai selera.</p>
+                    <p>Tambahkan sayuran (kangkung, ubi, pakis dan sayur lainnya) sesuai selera.</p>
                 </div>
                 <div class="step">
                     <div class="step-num">4</div>
@@ -317,29 +311,26 @@
         <h2 class="section-title">Formulir Pemesanan</h2>
         <div class="form-container">
             <form id="orderForm">
-             <div class="form-group">
-                <label>Nama Lengkap</label>
-                <input type="text" id="nama" placeholder="Masukkan nama Anda" required>
-            </div>
-            <div class="form-group">
-                <label>Nomor WhatsApp</label>
-                <input type="tel" id="wa" placeholder="Contoh: 0812345678" required>
-             </div>
-            <div class="form-group">
-                <label>Alamat Pengiriman</label>
-                <textarea id="alamat" rows="3" placeholder="Tulis alamat lengkap Anda" required></textarea>
-            </div>
-            <div class="form-group">
-                <label>Jumlah Order (pcs)</label>
-                <input type="number" id="jumlah" min="1" value="1" required>
-            </div>
-    
-        <button type="submit" class="btn-submit">🛒 PESAN VIA WHATSAPP SEKARANG</button>
-    
-        <p style="text-align: center; margin: 15px 0; font-weight: 600; color: #666;">— ATAU —</p>
-
-        <a href="https://s.shopee.co.id/5q1TOoEz6l" target="_blank" class="btn-shopee">🧡 BELI LEWAT SHOPEE</a>
-    </form>
+                <div class="form-group">
+                    <label>Nama Lengkap</label>
+                    <input type="text" id="nama" placeholder="Masukkan nama Anda" required>
+                </div>
+                <div class="form-group">
+                    <label>Nomor WhatsApp</label>
+                    <input type="tel" id="wa" placeholder="Contoh: 0812345678" required>
+                </div>
+                <div class="form-group">
+                    <label>Alamat Pengiriman</label>
+                    <textarea id="alamat" rows="3" placeholder="Tulis alamat lengkap Anda" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Jumlah Order (pcs)</label>
+                    <input type="number" id="jumlah" min="1" value="1" required>
+                </div>
+                <button type="submit" class="btn-submit">🛒 PESAN VIA WHATSAPP SEKARANG</button>
+                <p style="text-align: center; margin: 15px 0; font-weight: 600; color: #666;">— ATAU —</p>
+                <a href="https://s.shopee.co.id/5q1TOoEz6l" target="_blank" class="btn-shopee">🧡 BELI LEWAT SHOPEE</a>
+            </form>
         </div>
     </section>
 
@@ -364,17 +355,12 @@
 
         document.getElementById('orderForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            const phoneAdmin = "628123456789"; 
             const nama = document.getElementById('nama').value;
             const wa = document.getElementById('wa').value;
             const alamat = document.getElementById('alamat').value;
             const jumlah = document.getElementById('jumlah').value;
-            const pesan = 
-            `hallo kak, saya ${nama}, 
-            ingin beli bumbu burdas ${jumlah} pcs dong, 
-            bisa ngak ya diantar ke ${alamat}, 
-            nomor wa saya ${wa}`;
-            window.open(`https://wa.me/${6285228880988}?text=${encodeURIComponent(pesan)}`, '_blank');
+            const pesan = `hallo kak, saya ${nama}, ingin beli bumbu burdas ${jumlah} pcs dong, bisa ngak ya diantar ke ${alamat}, nomor wa saya ${wa}`;
+            window.open(`https://wa.me/6285228880988?text=${encodeURIComponent(pesan)}`, '_blank');
         });
     </script>
 </body>
