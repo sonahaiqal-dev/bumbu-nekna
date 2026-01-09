@@ -8,18 +8,17 @@
     <style>
         :root {
             /* Palette Earth Tone & Spice */
-            --primary: #c0392b; /* Merah Cabai Matang */
-            --secondary: #d35400; /* Oranye Rempah */
-            --dark: #2c3e50; /* Charcoal */
+            --primary: #c0392b; 
+            --secondary: #d35400; 
+            --dark: #2c3e50; 
             --text-grey: #5f6c7b;
-            --bg-body: #FDFBF7; /* Warna Krem Beras/Bubur */
+            --bg-body: #FDFBF7; 
             --bg-white: #ffffff;
             --success: #27ae60;
             --shopee: #ee4d2d;
             
             --radius: 12px;
             --shadow-soft: 0 10px 40px -10px rgba(0,0,0,0.08);
-            --shadow-hover: 0 20px 40px -10px rgba(0,0,0,0.15);
         }
 
         * {
@@ -69,13 +68,12 @@
         .btn-primary {
             background: var(--primary);
             color: white;
-            /* Shadow lebih kuat agar kontras dengan foto */
-            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.4); 
+            box-shadow: 0 4px 15px rgba(192, 57, 43, 0.3);
         }
 
         .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 8px 25px rgba(192, 57, 43, 0.4);
             background: #a93226;
         }
 
@@ -91,32 +89,48 @@
             color: white;
         }
 
-        /* --- HERO SECTION MODIFIED --- */
+        /* --- HERO SECTION (UPDATED) --- */
         .hero {
             position: relative;
+            /* Default Desktop: Tinggi & Parallax Aktif */
             height: 90vh;
-            min-height: 600px;
-            /* UPDATE: Menggunakan produk.jpg */
-            /* Gradient dibuat transparan di atas (agar teks foto terbaca) dan gelap di bawah (agar tombol kontras) */
-            background: linear-gradient(to bottom, rgba(0,0,0,0) 50%, rgba(0,0,0,0.6) 100%), url('produk.png');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed; /* Parallax effect */
+            min-height: 600px; 
+            
+            /* Gambar Background */
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.7)), url('produk.png');
+            background-size: cover;      /* Menutupi seluruh area */
+            background-position: center; /* Fokus ke tengah gambar */
+            background-attachment: fixed;/* Parallax Effect (Keren di PC) */
             
             display: flex;
-            /* UPDATE: Align flex-end agar tombol turun ke bawah */
-            align-items: flex-end; 
+            align-items: center;
             justify-content: center;
             text-align: center;
-            
-            /* Memberi jarak dari bawah agar tombol tidak mepet */
-            padding-bottom: 80px; 
+            color: white;
         }
 
         .hero-content {
             max-width: 700px;
             padding: 0 20px;
-            width: 100%;
+            z-index: 2; /* Agar teks di atas background */
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            color: white;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            margin-bottom: 40px;
+            opacity: 0.95;
+            font-weight: 300;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            text-shadow: 0 1px 5px rgba(0,0,0,0.3);
         }
 
         /* --- FEATURES --- */
@@ -345,8 +359,23 @@
             margin-top: 50px;
         }
 
+        /* --- MOBILE RESPONSIVE FIX --- */
         @media (max-width: 768px) {
-            .hero { background-attachment: scroll; }
+            .hero {
+                /* FIX 1: Matikan Parallax di Mobile agar gambar stabil */
+                background-attachment: scroll; 
+                
+                /* FIX 2: Pastikan posisi center */
+                background-position: center center;
+                
+                /* FIX 3: Kurangi tinggi minimum. 
+                   Jika terlalu tinggi, gambar landscape dipaksa zoom in parah. */
+                min-height: 480px; 
+                height: 75vh; 
+            }
+
+            .hero h1 { font-size: 2.2rem; } /* Kecilkan font judul sedikit */
+            
             .order-wrapper { flex-direction: column; }
             .order-info { padding: 40px 30px; text-align: center; }
             .order-form-area { padding: 30px 20px; }
@@ -360,6 +389,7 @@
 
     <header class="hero">
         <div class="hero-content">
+  
             <div style="display: flex; justify-content: center;">
                 <a href="#order-area" class="btn btn-primary">Pesan Sekarang</a>
             </div>
@@ -376,7 +406,7 @@
                 <div class="feature-item">
                     <div class="icon-box">🌿</div>
                     <h3>100% Rempah Alami</h3>
-                    <p>Diracik dari dedaunan dan rempah pilihan tanpa pengawet buatan, menjaga keaslian rasa.</p>
+                    <p>Diracik dari rempah - rempah pilihan tanpa pengawet buatan, menjaga keaslian rasa.</p>
                 </div>
                 <div class="feature-item">
                     <div class="icon-box">⏳</div>
@@ -427,7 +457,6 @@
     <section id="order-area" class="section-padding">
         <div class="container">
             <div class="order-wrapper">
-                
                 <div class="order-info">
                     <h3 style="color: white; margin-bottom: 10px;">Penawaran Spesial</h3>
                     <p style="opacity: 0.8;">Ambil promo terbatas hari ini sebelum kehabisan slot pengiriman.</p>
@@ -488,7 +517,7 @@
     </section>
 
     <footer>
-        <p>&copy; 2026 Bumbu Bubur Pedas Nek Na.<br>Made with ❤️ in West Kalimantan.</p>
+        <p>&copy; 2025 Bumbu Bubur Pedas Nek Na.<br>Made with ❤️ in West Kalimantan.</p>
     </footer>
 
     <script>
@@ -501,10 +530,7 @@
             h = h < 10 ? '0' + h : h;
             m = m < 10 ? '0' + m : m;
             s = s < 10 ? '0' + s : s;
-            
-            // Format dengan spasi agar lebih jelas
             timerEl.innerHTML = `${h} : ${m} : ${s}`;
-            
             if (seconds > 0) seconds--;
         }
         setInterval(updateTimer, 1000);
@@ -521,5 +547,3 @@
     </script>
 </body>
 </html>
-
-
