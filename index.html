@@ -7,26 +7,18 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* Palette Earth Tone & Spice */
             --primary: #c0392b; 
             --secondary: #d35400; 
             --dark: #2c3e50; 
             --text-grey: #5f6c7b;
             --bg-body: #FDFBF7; 
             --bg-white: #ffffff;
-            --success: #27ae60;
             --shopee: #ee4d2d;
-            
             --radius: 12px;
             --shadow-soft: 0 10px 40px -10px rgba(0,0,0,0.08);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            outline: none;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; outline: none; }
 
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
@@ -54,26 +46,28 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            padding: 16px 40px;
+            padding: 14px 35px;
             border-radius: 50px;
-            font-weight: 600;
+            font-weight: 700;
             text-decoration: none;
             transition: all 0.3s ease;
             letter-spacing: 0.5px;
-            font-size: 1rem;
+            font-size: 0.95rem;
             cursor: pointer;
             border: none;
+            text-transform: uppercase;
         }
 
         .btn-primary {
             background: var(--primary);
             color: white;
-            box-shadow: 0 4px 15px rgba(192, 57, 43, 0.3);
+            box-shadow: 0 4px 15px rgba(192, 57, 43, 0.4);
+            border: 2px solid white; /* List putih agar kontras dengan foto */
         }
 
         .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(192, 57, 43, 0.4);
+            box-shadow: 0 8px 25px rgba(192, 57, 43, 0.5);
             background: #a93226;
         }
 
@@ -83,72 +77,42 @@
             color: var(--primary);
             padding: 12px 30px;
         }
-        
-        .btn-outline:hover {
-            background: var(--primary);
-            color: white;
-        }
+        .btn-outline:hover { background: var(--primary); color: white; }
 
-        /* --- HERO SECTION (UPDATED) --- */
-        .hero {
+        /* --- HERO SECTION (REVISI TOTAL: RESPONSIF MURNI) --- */
+        .hero-wrapper {
             position: relative;
-            /* Default Desktop: Tinggi & Parallax Aktif */
-            height: 90vh;
-            min-height: 600px; 
-            
-            /* Gambar Background */
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.7)), url('produk.png');
-            background-size: cover;      /* Menutupi seluruh area */
-            background-position: center; /* Fokus ke tengah gambar */
-            background-attachment: fixed;/* Parallax Effect (Keren di PC) */
-            
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            width: 100%;
+            overflow: hidden;
+            line-height: 0; /* Menghilangkan gap di bawah gambar */
+        }
+
+        .hero-image {
+            width: 100%;
+            height: auto; /* KUNCI: Tinggi menyesuaikan lebar (tidak dipaksa) */
+            display: block;
+        }
+
+        .hero-overlay-btn {
+            position: absolute;
+            bottom: 8%; /* Posisi tombol agak naik dari bawah */
+            left: 0;
+            width: 100%;
             text-align: center;
-            color: white;
-        }
-
-        .hero-content {
-            max-width: 700px;
-            padding: 0 20px;
-            z-index: 2; /* Agar teks di atas background */
-        }
-
-        .hero h1 {
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            color: white;
-            margin-bottom: 20px;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
-        }
-
-        .hero p {
-            font-size: 1.1rem;
-            margin-bottom: 40px;
-            opacity: 0.95;
-            font-weight: 300;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-            text-shadow: 0 1px 5px rgba(0,0,0,0.3);
+            z-index: 10;
         }
 
         /* --- FEATURES --- */
-        .section-padding { padding: 80px 0; }
+        .section-padding { padding: 60px 0; }
         
-        .section-header {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-        
-        .section-header h2 { font-size: 2.5rem; margin-bottom: 10px; }
+        .section-header { text-align: center; margin-bottom: 50px; }
+        .section-header h2 { font-size: 2.2rem; margin-bottom: 10px; }
         .section-header span { 
             color: var(--secondary); 
             text-transform: uppercase; 
             letter-spacing: 2px; 
             font-size: 0.8rem; 
             font-weight: 700;
-            font-family: 'Plus Jakarta Sans', sans-serif;
         }
 
         .grid-3 {
@@ -165,234 +129,118 @@
             transition: 0.3s;
             border: 1px solid rgba(0,0,0,0.03);
         }
-
-        .feature-item:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-soft);
-        }
+        .feature-item:hover { transform: translateY(-5px); box-shadow: var(--shadow-soft); }
 
         .icon-box {
-            width: 70px;
-            height: 70px;
-            background: #fff5f0;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-            font-size: 30px;
+            width: 70px; height: 70px; background: #fff5f0;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 20px; font-size: 30px;
         }
 
         /* --- COOKING STEPS --- */
         .bg-white-section { background: white; }
 
         .step-list {
-            counter-reset: step-counter;
-            list-style: none;
-            max-width: 800px;
-            margin: auto;
+            counter-reset: step-counter; list-style: none; max-width: 800px; margin: auto;
         }
 
-        .step-item {
-            position: relative;
-            padding-left: 60px;
-            margin-bottom: 30px;
-        }
-
+        .step-item { position: relative; padding-left: 60px; margin-bottom: 30px; }
         .step-item::before {
-            counter-increment: step-counter;
-            content: counter(step-counter);
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 40px;
-            height: 40px;
-            background: var(--dark);
-            color: white;
-            border-radius: 50%;
-            text-align: center;
-            line-height: 40px;
-            font-weight: bold;
-            font-family: 'Plus Jakarta Sans', sans-serif;
+            counter-increment: step-counter; content: counter(step-counter);
+            position: absolute; left: 0; top: 0;
+            width: 40px; height: 40px; background: var(--dark);
+            color: white; border-radius: 50%; text-align: center;
+            line-height: 40px; font-weight: bold;
         }
-
-        .step-item h4 {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-size: 1.1rem;
-            color: var(--dark);
-            margin-bottom: 5px;
-        }
+        .step-item h4 { font-size: 1.1rem; color: var(--dark); margin-bottom: 5px; }
 
         /* --- PROMO & FORM --- */
         .order-wrapper {
-            background: white;
-            border-radius: 20px;
-            box-shadow: var(--shadow-soft);
-            overflow: hidden;
-            display: flex;
-            flex-wrap: wrap;
+            background: white; border-radius: 20px;
+            box-shadow: var(--shadow-soft); overflow: hidden;
+            display: flex; flex-wrap: wrap;
         }
 
         .order-info {
-            flex: 1;
-            background: var(--dark);
-            color: white;
-            padding: 50px;
-            min-width: 300px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
+            flex: 1; background: var(--dark); color: white; padding: 50px;
+            min-width: 300px; display: flex; flex-direction: column; justify-content: center;
             background-image: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
         }
 
-        .order-form-area {
-            flex: 1.5;
-            padding: 50px;
-            min-width: 320px;
-        }
+        .order-form-area { flex: 1.5; padding: 50px; min-width: 320px; }
 
-        .price-tag {
-            margin: 20px 0;
-            border-left: 4px solid var(--secondary);
-            padding-left: 20px;
-        }
-
+        .price-tag { margin: 20px 0; border-left: 4px solid var(--secondary); padding-left: 20px; }
         .price-old { opacity: 0.6; font-size: 1rem; text-decoration: line-through; }
         .price-new { font-size: 3rem; font-weight: 700; color: var(--secondary); line-height: 1; font-family: 'Plus Jakarta Sans', sans-serif; }
         
         .timer-badge {
-            background: rgba(255,255,255,0.1);
-            padding: 12px 25px;
-            border-radius: 12px;
-            display: inline-block;
-            margin-top: 10px;
-            font-family: 'Plus Jakarta Sans', monospace;
-            font-variant-numeric: tabular-nums;
-            font-weight: 800;
-            font-size: clamp(1.8rem, 5vw, 2.5rem);
-            letter-spacing: 2px;
-            color: var(--bg-body);
-            border: 1px solid rgba(255,255,255,0.15);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            background: rgba(255,255,255,0.1); padding: 12px 25px; border-radius: 12px;
+            display: inline-block; margin-top: 10px;
+            font-family: 'Plus Jakarta Sans', monospace; font-variant-numeric: tabular-nums;
+            font-weight: 800; font-size: clamp(1.8rem, 5vw, 2.5rem); letter-spacing: 2px;
+            color: var(--bg-body); border: 1px solid rgba(255,255,255,0.15);
         }
 
         /* --- FORM --- */
         .form-group { margin-bottom: 20px; }
         .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--text-grey);
+            display: block; margin-bottom: 8px; font-size: 0.85rem; font-weight: 600;
+            text-transform: uppercase; letter-spacing: 1px; color: var(--text-grey);
         }
 
         .form-control {
-            width: 100%;
-            padding: 16px;
-            border: 1px solid #e1e1e1;
-            border-radius: 8px;
-            background: #fdfdfd;
-            font-family: inherit;
-            transition: 0.3s;
-            font-size: 1rem;
+            width: 100%; padding: 16px; border: 1px solid #e1e1e1;
+            border-radius: 8px; background: #fdfdfd; font-family: inherit;
+            transition: 0.3s; font-size: 1rem;
         }
-
-        .form-control:focus {
-            border-color: var(--dark);
-            background: white;
-        }
+        .form-control:focus { border-color: var(--dark); background: white; }
 
         .btn-submit {
-            width: 100%;
-            background: #25D366; 
-            color: white;
-            border: none;
-            padding: 18px;
-            font-weight: 700;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 1.1rem;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 10px;
-            transition: 0.3s;
+            width: 100%; background: #25D366; color: white; border: none;
+            padding: 18px; font-weight: 700; border-radius: 8px; cursor: pointer;
+            font-size: 1.1rem; display: flex; justify-content: center; align-items: center;
+            gap: 10px; transition: 0.3s;
         }
-
         .btn-submit:hover { background: #20bd5a; }
 
         .btn-shopee {
-            display: block;
-            text-align: center;
-            margin-top: 15px;
-            color: var(--shopee);
-            font-weight: 600;
-            text-decoration: none;
-            font-size: 0.9rem;
-            padding: 15px;
-            border: 1px dashed var(--shopee);
-            border-radius: 8px;
-            transition: 0.3s;
+            display: block; text-align: center; margin-top: 15px; color: var(--shopee);
+            font-weight: 600; text-decoration: none; font-size: 0.9rem; padding: 15px;
+            border: 1px dashed var(--shopee); border-radius: 8px; transition: 0.3s;
         }
-
         .btn-shopee:hover { background: #fff5f0; }
 
         .trust-badges {
-            margin-top: 20px;
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-            font-size: 0.8rem;
-            color: #999;
+            margin-top: 20px; display: flex; gap: 15px; justify-content: center;
+            font-size: 0.8rem; color: #999;
         }
-        
         .trust-item { display: flex; align-items: center; gap: 5px; }
 
         footer {
-            text-align: center;
-            padding: 40px;
-            font-size: 0.8rem;
-            border-top: 1px solid rgba(0,0,0,0.05);
-            margin-top: 50px;
+            text-align: center; padding: 40px; font-size: 0.8rem;
+            border-top: 1px solid rgba(0,0,0,0.05); margin-top: 50px;
         }
 
-        /* --- MOBILE RESPONSIVE FIX --- */
+        /* MOBILE ADJUSTMENT */
         @media (max-width: 768px) {
-            .hero {
-                /* FIX 1: Matikan Parallax di Mobile agar gambar stabil */
-                background-attachment: scroll; 
-                
-                /* FIX 2: Pastikan posisi center */
-                background-position: center center;
-                
-                /* FIX 3: Kurangi tinggi minimum. 
-                   Jika terlalu tinggi, gambar landscape dipaksa zoom in parah. */
-                min-height: 480px; 
-                height: 75vh; 
-            }
-
-            .hero h1 { font-size: 2.2rem; } /* Kecilkan font judul sedikit */
-            
             .order-wrapper { flex-direction: column; }
             .order-info { padding: 40px 30px; text-align: center; }
             .order-form-area { padding: 30px 20px; }
             .price-tag { border: none; padding: 0; }
-            .section-header h2 { font-size: 2rem; }
-            .timer-badge { margin-top: 15px; width: 100%; max-width: 300px; }
+            
+            /* Di mobile, tombol CTA dibuat lebih kecil sedikit */
+            .btn { padding: 12px 25px; font-size: 0.85rem; }
+            .hero-overlay-btn { bottom: 6%; } /* Menyesuaikan posisi di layar kecil */
         }
     </style>
 </head>
 <body>
 
-    <header class="hero">
-        <div class="hero-content">
-  
-            <div style="display: flex; justify-content: center;">
-                <a href="#order-area" class="btn btn-primary">Pesan Sekarang</a>
-            </div>
+    <header class="hero-wrapper">
+        <img src="produk.png" alt="Bumbu Bubur Pedas Nek Na" class="hero-image">
+        
+        <div class="hero-overlay-btn">
+            <a href="#order-area" class="btn btn-primary">Pesan Sekarang</a>
         </div>
     </header>
 
