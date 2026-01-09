@@ -3,339 +3,495 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bumbu Bubur Pedas Nek Na - Praktis & Lezat</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <title>Bumbu Bubur Pedas Nek Na - Premium & Autentik</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-blue: #0056b3;
-            --accent-yellow: #f1c40f;
-            --dark-text: #333;
-            --light-bg: #f8f9fa;
-            --white: #ffffff;
-            --danger: #e74c3c;
-            --dark-brown: #3e2716;
+            /* Palette Earth Tone & Spice */
+            --primary: #c0392b; /* Merah Cabai Matang */
+            --secondary: #d35400; /* Oranye Rempah */
+            --dark: #2c3e50; /* Charcoal */
+            --text-grey: #5f6c7b;
+            --bg-body: #FDFBF7; /* Warna Krem Beras/Bubur */
+            --bg-white: #ffffff;
+            --success: #27ae60;
+            --shopee: #ee4d2d;
+            
+            --radius: 12px;
+            --shadow-soft: 0 10px 40px -10px rgba(0,0,0,0.08);
+            --shadow-hover: 0 20px 40px -10px rgba(0,0,0,0.15);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            scroll-behavior: smooth;
+            outline: none;
         }
 
         body {
-            font-family: 'Poppins', sans-serif;
-            line-height: 1.6;
-            color: var(--dark-text);
-            background-color: var(--light-bg);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.7;
+            color: var(--text-grey);
+            background-color: var(--bg-body);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--dark);
+            line-height: 1.2;
         }
 
         .container {
             width: 90%;
-            max-width: 1100px;
+            max-width: 1000px;
             margin: auto;
-            padding: 60px 0;
-        }
-
-        /* --- HERO SECTION --- */
-        header.hero-section {
-            width: 100%;
-            aspect-ratio: 16 / 9; 
-            background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), 
-                              url('produk.png'); 
-            background-size: cover;
-            background-position: center center;
-            background-repeat: no-repeat;
-            display: flex;
-            align-items: flex-end; 
-            justify-content: center;
-            padding-bottom: 4%; 
             position: relative;
         }
 
-        /* --- STYLE TOMBOL CTA --- */
-        .btn-cta {
-            background-color: var(--accent-yellow);
-            color: var(--dark-brown);
-            padding: 15px 35px; /* Menggunakan PX agar lebih stabil */
+        /* --- BUTTONS --- */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px 40px; /* Padding diperlebar sedikit agar tombol lebih gagah sendiri */
             border-radius: 50px;
-            text-decoration: none;
-            font-weight: 800;
-            font-size: clamp(0.9rem, 2vw, 1.2rem); 
-            text-transform: uppercase;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.25);
-            transition: 0.3s;
-            border: 2px solid var(--white);
-            display: inline-block;
-            text-align: center;
-            white-space: nowrap;
-        }
-
-        .btn-cta:hover {
-            transform: translateY(-3px);
-            background-color: var(--white);
-        }
-
-        .text-center { text-align: center; margin-top: 40px; }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 40px;
-            font-size: 2.2rem;
-            color: var(--primary-blue);
             font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            letter-spacing: 0.5px;
+            font-size: 1rem;
+            cursor: pointer;
+            border: none;
         }
 
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 4px 15px rgba(192, 57, 43, 0.3);
         }
 
-        .feature-card {
-            background: white;
-            padding: 35px;
-            border-radius: 20px;
-            text-align: center;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(192, 57, 43, 0.4);
+            background: #a93226;
         }
 
-        .feature-card h3 { color: var(--primary-blue); margin: 15px 0; }
-
-        .cooking-section {
-            background: #eef2f7;
-            border-radius: 50px;
-            padding: 80px 20px;
-            margin: 40px 0;
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            padding: 12px 30px;
+        }
+        
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
         }
 
-        .cooking-box {
-            background: var(--white);
-            border-radius: 25px;
-            padding: 30px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            max-width: 800px;
-            margin: auto;
-        }
-
-        .step {
+        /* --- HERO SECTION --- */
+        .hero {
+            position: relative;
+            height: 90vh;
+            min-height: 600px;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.7)), url('produk.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
             display: flex;
             align-items: center;
-            margin-bottom: 15px;
-            padding: 15px;
-            background: #f9f9f9;
-            border-radius: 15px;
+            justify-content: center;
+            text-align: center;
+            color: white;
         }
 
-        .step-num {
-            background: var(--primary-blue);
+        .hero-content {
+            max-width: 700px;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
             color: white;
-            width: 40px;
-            height: 40px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            margin-bottom: 40px;
+            opacity: 0.95;
+            font-weight: 300;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* --- FEATURES --- */
+        .section-padding { padding: 80px 0; }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-header h2 { font-size: 2.5rem; margin-bottom: 10px; }
+        .section-header span { 
+            color: var(--secondary); 
+            text-transform: uppercase; 
+            letter-spacing: 2px; 
+            font-size: 0.8rem; 
+            font-weight: 700;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-item {
+            background: white;
+            padding: 40px 30px;
+            border-radius: var(--radius);
+            text-align: center;
+            transition: 0.3s;
+            border: 1px solid rgba(0,0,0,0.03);
+        }
+
+        .feature-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .icon-box {
+            width: 70px;
+            height: 70px;
+            background: #fff5f0;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: bold;
-            margin-right: 20px;
-            flex-shrink: 0;
+            margin: 0 auto 20px;
+            font-size: 30px;
         }
 
-        .promo-area {
-            background: var(--danger);
+        /* --- COOKING STEPS --- */
+        .bg-white-section { background: white; }
+
+        .step-list {
+            counter-reset: step-counter;
+            list-style: none;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .step-item {
+            position: relative;
+            padding-left: 60px;
+            margin-bottom: 30px;
+        }
+
+        .step-item::before {
+            counter-increment: step-counter;
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 40px;
+            height: 40px;
+            background: var(--dark);
             color: white;
+            border-radius: 50%;
             text-align: center;
-            padding: 60px 20px;
-            border-radius: 35px;
+            line-height: 40px;
+            font-weight: bold;
+            font-family: 'Plus Jakarta Sans', sans-serif;
         }
 
-        .new-price {
-            font-size: clamp(2.5rem, 10vw, 4rem);
-            font-weight: 900;
-            color: var(--accent-yellow);
-            display: block;
-            margin: 10px 0;
+        .step-item h4 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.1rem;
+            color: var(--dark);
+            margin-bottom: 5px;
         }
 
-        #timer {
-            font-size: 2rem;
-            font-weight: 800;
-            background: rgba(0,0,0,0.3);
-            display: inline-block;
-            padding: 12px 30px;
-            border-radius: 15px;
-            margin-bottom: 20px;
-        }
-
-        .form-container {
+        /* --- PROMO & FORM --- */
+        .order-wrapper {
             background: white;
-            padding: 40px;
-            border-radius: 30px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+            border-radius: 20px;
+            box-shadow: var(--shadow-soft);
+            overflow: hidden;
+            display: flex;
+            flex-wrap: wrap;
         }
 
+        .order-info {
+            flex: 1;
+            background: var(--dark);
+            color: white;
+            padding: 50px;
+            min-width: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .order-form-area {
+            flex: 1.5;
+            padding: 50px;
+            min-width: 320px;
+        }
+
+        .price-tag {
+            margin: 30px 0;
+            border-left: 4px solid var(--secondary);
+            padding-left: 20px;
+        }
+
+        .price-old { opacity: 0.6; font-size: 1rem; text-decoration: line-through; }
+        .price-new { font-size: 3rem; font-weight: 700; color: var(--secondary); line-height: 1; font-family: 'Plus Jakarta Sans', sans-serif; }
+        
+        .timer-badge {
+            background: rgba(255,255,255,0.1);
+            padding: 10px 20px;
+            border-radius: 8px;
+            display: inline-block;
+            margin-top: 20px;
+            font-variant-numeric: tabular-nums;
+            font-weight: 600;
+        }
+
+        /* --- FORM --- */
         .form-group { margin-bottom: 20px; }
-        .form-group label { display: block; margin-bottom: 8px; font-weight: 600; }
-        .form-group input, .form-group textarea {
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-grey);
+        }
+
+        .form-control {
             width: 100%;
             padding: 16px;
-            border: 2px solid #eee;
-            border-radius: 15px;
+            border: 1px solid #e1e1e1;
+            border-radius: 8px;
+            background: #fdfdfd;
+            font-family: inherit;
+            transition: 0.3s;
             font-size: 1rem;
+        }
+
+        .form-control:focus {
+            border-color: var(--dark);
+            background: white;
         }
 
         .btn-submit {
             width: 100%;
-            background: #25d366;
+            background: #25D366; 
             color: white;
-            padding: 20px;
-            border-radius: 15px;
             border: none;
-            font-size: 1.2rem;
-            font-weight: 800;
+            padding: 18px;
+            font-weight: 700;
+            border-radius: 8px;
             cursor: pointer;
+            font-size: 1.1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
             transition: 0.3s;
         }
 
-        .btn-submit:hover { background: #1eb954; transform: scale(1.02); }
+        .btn-submit:hover { background: #20bd5a; }
 
         .btn-shopee {
             display: block;
-            width: 100%;
-            background: #ee4d2d;
-            color: white;
-            padding: 20px;
-            border-radius: 15px;
-            text-decoration: none;
-            font-size: 1.2rem;
-            font-weight: 800;
             text-align: center;
             margin-top: 15px;
+            color: var(--shopee);
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 0.9rem;
+            padding: 15px;
+            border: 1px dashed var(--shopee);
+            border-radius: 8px;
             transition: 0.3s;
-            border: none;
         }
 
-        .btn-shopee:hover {
-            background: #ff5722;
-            transform: scale(1.02);
+        .btn-shopee:hover { background: #fff5f0; }
+
+        .trust-badges {
+            margin-top: 20px;
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            font-size: 0.8rem;
+            color: #999;
+        }
+        
+        .trust-item { display: flex; align-items: center; gap: 5px; }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            font-size: 0.8rem;
+            border-top: 1px solid rgba(0,0,0,0.05);
+            margin-top: 50px;
         }
 
-        /* --- MOBILE ADJUSTMENT --- */
-        @media (max-width: 500px) {
-            .btn-cta {
-                padding: 12px 24px;
-                font-size: 0.9rem;
-                width: auto;
-                display: inline-block;
-                white-space: nowrap;
-                line-height: 1.4;
-            }
-            .container { padding: 40px 0; }
-            .section-title { font-size: 1.2rem; }
-            .cooking-section { border-radius: 20px; padding: 40px 15px; }
-            .form-container { padding: 25px; }
-            .new-price { font-size: 2.2rem; }
+        @media (max-width: 768px) {
+            .hero { background-attachment: scroll; }
+            .order-wrapper { flex-direction: column; }
+            .order-info { padding: 40px 30px; text-align: center; }
+            .order-form-area { padding: 30px 20px; }
+            .price-tag { border: none; padding: 0; }
+            .section-header h2 { font-size: 2rem; }
         }
     </style>
 </head>
 <body>
 
-    <header class="hero-section">
-        <a href="#order-form" class="btn-cta">BELI SEKARANG</a>
+    <header class="hero">
+        <div class="hero-content">
+            <p style="text-transform: uppercase; letter-spacing: 3px; font-size: 0.8rem;">Cita Rasa Asli Kalimantan Barat</p>
+            <h1>Bumbu Bubur Pedas <br> <span style="font-style: italic;">Nek Na</span></h1>
+            <p>Sajikan kehangatan tradisi di meja makan Anda tanpa repot. Praktis, autentik, dan menggugah selera.</p>
+            
+            <div style="display: flex; justify-content: center;">
+                <a href="#order-area" class="btn btn-primary">Pesan Sekarang</a>
+            </div>
+        </div>
     </header>
 
-    <section class="container">
-        <h1 class="section-title">Mengapa Harus Bumbu Bubur Pedas Nek Na?</h1>
-        <div class="features">
-            <div class="feature-card">
-                <span style="font-size: 50px;">🌿</span>
-                <h3>Rempah Alami</h3>
-                <p>Dibuat dari campuran rempah asli pilihan tanpa bahan pengawet.</p>
-            </div>
-            <div class="feature-card">
-                <span style="font-size: 50px;">⚡</span>
-                <h3>Super Praktis</h3>
-                <p>Masak Bubur Pedas khas Kalimantan Barat kini tidak perlu ribet sangrai beras lagi.</p>
-            </div>
-            <div class="feature-card">
-                <span style="font-size: 50px;">😋</span>
-                <h3>Rasa Juara</h3>
-                <p>Kelezatan autentik yang bikin ketagihan, sama seperti makan di tempat asalnya.</p>
-            </div>
-        </div>
-        <div class="text-center">
-            <a href="#order-form" class="btn-cta">SAYA MAU PESAN SEKARANG</a>
-        </div>
-    </section>
-
-    <section class="cooking-section">
+    <section id="features" class="section-padding">
         <div class="container">
-            <h2 class="section-title">Cara Masak Simpel</h2>
-            <div class="cooking-box">
-                <div class="step">
-                    <div class="step-num">1</div>
-                    <p>Didihkan air di dalam panci (sekitar 1.5 - 2 liter).</p>
-                </div>
-                <div class="step">
-                    <div class="step-num">2</div>
-                    <p>Masukkan 1 bungkus Bumbu Bubur Pedas Nek Na, aduk rata hingga mengental.</p>
-                </div>
-                <div class="step">
-                    <div class="step-num">3</div>
-                    <p>Tambahkan sayuran (kangkung, ubi, pakis dan sayur lainnya) sesuai selera.</p>
-                </div>
-                <div class="step">
-                    <div class="step-num">4</div>
-                    <p>Masak hingga matang dan sajikan dengan kacang & teri goreng.</p>
-                </div>
+            <div class="section-header">
+                <span>KEUNGGULAN KAMI</span>
+                <h2>Kenapa Memilih Nek Na?</h2>
             </div>
-            <div class="text-center">
-                <a href="#order-form" class="btn-cta">COBA MASAK DI RUMAH</a>
-            </div>
-        </div>
-    </section>
-
-    <section class="container">
-        <div class="promo-area">
-            <h2>🔥 PENAWARAN SPESIAL HARI INI 🔥</h2>
-            <span class="new-price">Rp 25.000 / bungkus</span>
-            <p style="margin-bottom: 10px;">Harga Normal: <del>Rp 45.000</del></p>
-            <div id="timer">10:00:00</div>
-            <div class="text-center" style="margin-top: 10px;">
-                <a href="#order-form" class="btn-cta" style="background: white; border-color: var(--accent-yellow);">AMBIL PROMO SEKARANG</a>
+            <div class="grid-3">
+                <div class="feature-item">
+                    <div class="icon-box">🌿</div>
+                    <h3>100% Rempah Alami</h3>
+                    <p>Diracik dari rempah-rempah pilihan tanpa pengawet buatan, menjaga keaslian rasa.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="icon-box">⏳</div>
+                    <h3>Hemat Waktu</h3>
+                    <p>Tak perlu lagi menyangrai beras berjam-jam. Cukup seduh dan masak, siap dalam hitungan menit.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="icon-box">✨</div>
+                    <h3>Rasa Autentik</h3>
+                    <p>Resep warisan turun temurun yang membawa rindu kampung halaman di setiap suapan.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="order-form" class="container">
-        <h2 class="section-title">Formulir Pemesanan</h2>
-        <div class="form-container">
-            <form id="orderForm">
-                <div class="form-group">
-                    <label>Nama Lengkap</label>
-                    <input type="text" id="nama" placeholder="Masukkan nama Anda" required>
-                </div>
-                <div class="form-group">
-                    <label>Nomor WhatsApp</label>
-                    <input type="tel" id="wa" placeholder="Contoh: 0812345678" required>
-                </div>
-                <div class="form-group">
-                    <label>Alamat Pengiriman</label>
-                    <textarea id="alamat" rows="3" placeholder="Tulis alamat lengkap Anda" required></textarea>
-                </div>
-                <div class="form-group">
-                    <label>Jumlah Order (pcs)</label>
-                    <input type="number" id="jumlah" min="1" value="1" required>
-                </div>
-                <button type="submit" class="btn-submit">🛒 PESAN VIA WHATSAPP SEKARANG</button>
-                <p style="text-align: center; margin: 15px 0; font-weight: 600; color: #666;">— ATAU —</p>
-                <a href="https://s.shopee.co.id/5q1TOoEz6l" target="_blank" class="btn-shopee">🧡 BELI LEWAT SHOPEE</a>
-            </form>
+    <section class="section-padding bg-white-section">
+        <div class="container">
+            <div class="section-header">
+                <span>CARA PENYAJIAN</span>
+                <h2>Mudah & Praktis</h2>
+            </div>
+            
+            <ul class="step-list">
+                <li class="step-item">
+                    <h4>Didihkan Air</h4>
+                    <p>Siapkan panci dan didihkan air sekitar 1.5 - 2 liter hingga benar-benar mendidih.</p>
+                </li>
+                <li class="step-item">
+                    <h4>Masukkan Bumbu</h4>
+                    <p>Tuang 1 bungkus Bumbu Nek Na, aduk perlahan hingga bumbu larut dan kuah mulai mengental wangi.</p>
+                </li>
+                <li class="step-item">
+                    <h4>Tambah Sayuran</h4>
+                    <p>Masukkan kangkung, pakis, ubi, atau jagung sesuai selera Anda.</p>
+                </li>
+                <li class="step-item">
+                    <h4>Sajikan Hangat</h4>
+                    <p>Angkat dan berikan topping kacang tanah serta ikan teri goreng untuk kenikmatan maksimal.</p>
+                </li>
+            </ul>
+            
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="#order-area" class="btn btn-outline">Saya Ingin Mencoba</a>
+            </div>
         </div>
     </section>
 
-    <footer style="text-align: center; padding: 50px; color: #999; font-size: 0.9rem;">
-        <p>&copy; 2025 Bumbu Bubur Pedas Nek Na. Khas Kalimantan Barat.</p>
+    <section id="order-area" class="section-padding">
+        <div class="container">
+            <div class="order-wrapper">
+                
+                <div class="order-info">
+                    <h3 style="color: white; margin-bottom: 10px;">Penawaran Spesial</h3>
+                    <p style="opacity: 0.8;">Ambil promo terbatas hari ini sebelum kehabisan slot pengiriman.</p>
+                    
+                    <div class="price-tag">
+                        <span class="price-old">Rp 45.000</span><br>
+                        <span class="price-new">Rp 25.000</span>
+                        <div style="font-size: 0.9rem; margin-top: 5px;">Per Bungkus</div>
+                    </div>
+
+                    <div style="margin-top: auto;">
+                        <p style="font-size: 0.9rem; margin-bottom: 5px;">Promo berakhir dalam:</p>
+                        <div id="timer" class="timer-badge">10:00:00</div>
+                    </div>
+                </div>
+
+                <div class="order-form-area">
+                    <h2 style="margin-bottom: 30px; font-size: 1.8rem;">Lengkapi Data Pengiriman</h2>
+                    
+                    <form id="orderForm">
+                        <div class="form-group">
+                            <label>Nama Penerima</label>
+                            <input type="text" id="nama" class="form-control" placeholder="Nama Lengkap" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Nomor WhatsApp</label>
+                            <input type="tel" id="wa" class="form-control" placeholder="08xx xxxx xxxx" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Alamat Lengkap</label>
+                            <textarea id="alamat" rows="2" class="form-control" placeholder="Jalan, No. Rumah, Kecamatan..." required></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Jumlah Pesanan (Bungkus)</label>
+                            <input type="number" id="jumlah" class="form-control" min="1" value="1" required style="font-weight: bold;">
+                        </div>
+
+                        <button type="submit" class="btn-submit">
+                            <span>Kirim Pesanan via WhatsApp</span>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2L15 22L11 13L2 9L22 2Z"/></svg>
+                        </button>
+                        
+                        <a href="https://s.shopee.co.id/5q1TOoEz6l" target="_blank" class="btn-shopee">
+                            Atau beli via <strong>Shopee</strong> (Bisa COD)
+                        </a>
+
+                        <div class="trust-badges">
+                            <div class="trust-item">🔒 Data Aman</div>
+                            <div class="trust-item">🚀 Proses Cepat</div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Bumbu Bubur Pedas Nek Na.<br>Made with ❤️ in West Kalimantan.</p>
     </footer>
 
     <script>
@@ -348,7 +504,7 @@
             h = h < 10 ? '0' + h : h;
             m = m < 10 ? '0' + m : m;
             s = s < 10 ? '0' + s : s;
-            timerEl.innerHTML = `${h}:${m}:${s}`;
+            timerEl.innerHTML = `${h} : ${m} : ${s}`;
             if (seconds > 0) seconds--;
         }
         setInterval(updateTimer, 1000);
@@ -365,8 +521,3 @@
     </script>
 </body>
 </html>
-
-
-
-
-
