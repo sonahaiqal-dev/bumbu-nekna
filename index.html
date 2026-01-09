@@ -69,12 +69,13 @@
         .btn-primary {
             background: var(--primary);
             color: white;
-            box-shadow: 0 4px 15px rgba(192, 57, 43, 0.3);
+            /* Shadow lebih kuat agar kontras dengan foto */
+            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.4); 
         }
 
         .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(192, 57, 43, 0.4);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
             background: #a93226;
         }
 
@@ -90,41 +91,32 @@
             color: white;
         }
 
-        /* --- HERO SECTION --- */
+        /* --- HERO SECTION MODIFIED --- */
         .hero {
             position: relative;
             height: 90vh;
             min-height: 600px;
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.7)), url('produk.png');
+            /* UPDATE: Menggunakan produk.jpg */
+            /* Gradient dibuat transparan di atas (agar teks foto terbaca) dan gelap di bawah (agar tombol kontras) */
+            background: linear-gradient(to bottom, rgba(0,0,0,0) 50%, rgba(0,0,0,0.6) 100%), url('produk.jpg');
             background-size: cover;
             background-position: center;
-            background-attachment: fixed;
+            background-attachment: fixed; /* Parallax effect */
+            
             display: flex;
-            align-items: center;
+            /* UPDATE: Align flex-end agar tombol turun ke bawah */
+            align-items: flex-end; 
             justify-content: center;
             text-align: center;
-            color: white;
+            
+            /* Memberi jarak dari bawah agar tombol tidak mepet */
+            padding-bottom: 80px; 
         }
 
         .hero-content {
             max-width: 700px;
             padding: 0 20px;
-        }
-
-        .hero h1 {
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            color: white;
-            margin-bottom: 20px;
-        }
-
-        .hero p {
-            font-size: 1.1rem;
-            margin-bottom: 40px;
-            opacity: 0.95;
-            font-weight: 300;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
+            width: 100%;
         }
 
         /* --- FEATURES --- */
@@ -236,7 +228,6 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            /* Tambahan background pattern halus agar tidak flat */
             background-image: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
         }
 
@@ -255,22 +246,16 @@
         .price-old { opacity: 0.6; font-size: 1rem; text-decoration: line-through; }
         .price-new { font-size: 3rem; font-weight: 700; color: var(--secondary); line-height: 1; font-family: 'Plus Jakarta Sans', sans-serif; }
         
-        /* --- UPDATE TIMER STYLE --- */
         .timer-badge {
             background: rgba(255,255,255,0.1);
             padding: 12px 25px;
             border-radius: 12px;
             display: inline-block;
             margin-top: 10px;
-            
-            /* Typography Update */
-            font-family: 'Plus Jakarta Sans', monospace; /* Monospace agar angka tidak goyang */
+            font-family: 'Plus Jakarta Sans', monospace;
             font-variant-numeric: tabular-nums;
             font-weight: 800;
-            
-            /* Responsive Sizing: Minimal 1.8rem (HP), Maksimal 2.5rem (PC) */
             font-size: clamp(1.8rem, 5vw, 2.5rem);
-            
             letter-spacing: 2px;
             color: var(--bg-body);
             border: 1px solid rgba(255,255,255,0.15);
@@ -367,20 +352,14 @@
             .order-form-area { padding: 30px 20px; }
             .price-tag { border: none; padding: 0; }
             .section-header h2 { font-size: 2rem; }
-            
-            /* Penyesuaian timer di mobile agar tetap rapi */
-            .timer-badge {
-                margin-top: 15px;
-                width: 100%; /* Agar full width di mobile */
-                max-width: 300px;
-            }
+            .timer-badge { margin-top: 15px; width: 100%; max-width: 300px; }
         }
     </style>
 </head>
 <body>
 
     <header class="hero">
-        <div class="hero-content">  
+        <div class="hero-content">
             <div style="display: flex; justify-content: center;">
                 <a href="#order-area" class="btn btn-primary">Pesan Sekarang</a>
             </div>
