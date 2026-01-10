@@ -93,14 +93,35 @@
             display: block;
         }
 
-        .hero-overlay-btn {
-            position: absolute;
-            bottom: 8%; /* Posisi tombol agak naik dari bawah */
-            left: 0;
-            width: 100%;
-            text-align: center;
-            z-index: 10;
-        }
+/* GANTI BAGIAN INI AGAR POSISI BENAR-BENAR DI TENGAH */
+.hero-overlay-btn {
+    position: absolute;
+    bottom: 8%; /* Jarak dari bawah foto */
+    left: 0;
+    width: 100%;
+    z-index: 10;
+    
+    /* Kunci Centering (Paling Ampuh) */
+    display: flex; 
+    justify-content: center; /* Memaksa elemen di dalamnya ke tengah horizontal */
+    align-items: center; 
+}
+
+/* Pastikan style tombolnya tetap besar */
+.hero-overlay-btn .btn {
+    padding: 18px 45px;
+    font-size: 1.15rem;
+    border-width: 3px;
+    box-shadow: 0 8px 30px rgba(192, 57, 43, 0.6);
+}
+
+/* Responsif HP */
+@media (max-width: 768px) {
+    .hero-overlay-btn .btn {
+        padding: 15px 35px;
+        font-size: 1rem;
+    }
+}
 
         /* --- FEATURES --- */
         .section-padding { padding: 60px 0; }
@@ -609,7 +630,6 @@
     </script>
 </body>
 </html>
-
 
 
 
