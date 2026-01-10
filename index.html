@@ -232,6 +232,117 @@
             .btn { padding: 12px 25px; font-size: 0.85rem; }
             .hero-overlay-btn { bottom: 6%; } /* Menyesuaikan posisi di layar kecil */
         }
+
+        /* --- SECTION LOKASI (OFFLINE STORE) --- */
+.location-section {
+    background-color: #f8f9fa; /* Abu-abu sangat muda agar beda section */
+}
+
+.location-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin-top: 40px;
+}
+
+.location-card {
+    background: var(--bg-white);
+    padding: 25px;
+    border-radius: var(--radius);
+    border: 1px solid rgba(0,0,0,0.05);
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    height: 100%; /* Agar tinggi kartu rata */
+}
+
+.location-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-soft);
+    border-color: rgba(211, 84, 0, 0.3);
+}
+
+.loc-icon-box {
+    width: 50px;
+    height: 50px;
+    background: #FFF5F0;
+    color: var(--secondary);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+
+.loc-details {
+    flex: 1;
+}
+
+.loc-details h4 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--dark);
+    font-family: 'Playfair Display', serif;
+}
+
+.loc-details p {
+    font-size: 0.9rem;
+    color: var(--text-grey);
+    line-height: 1.5;
+    margin-bottom: 15px;
+}
+
+.btn-map {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--primary);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    transition: 0.3s;
+}
+
+.btn-map:hover {
+    color: var(--secondary);
+    gap: 8px;
+}
+
+/* Style Khusus Kartu "On Progress" */
+.card-soon {
+    background: linear-gradient(145deg, #ffffff 0%, #f4f4f4 100%);
+    border: 1px dashed #ccc;
+    opacity: 0.9;
+}
+
+.badge-soon {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: var(--dark);
+    color: white;
+    font-size: 0.65rem;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* Responsif Mobile untuk Grid */
+@media (max-width: 768px) {
+    .location-grid {
+        grid-template-columns: 1fr; /* 1 kolom penuh di HP */
+    }
+    .location-card {
+        padding: 20px; /* Padding sedikit dikecilkan di HP */
+    }
+}
     </style>
 </head>
 <body>
@@ -301,6 +412,109 @@
             </div>
         </div>
     </section>
+
+    <section class="section-padding location-section">
+    <div class="container">
+        <div class="section-header">
+            <span>OFFLINE STORE</span>
+            <h2>Dapatkan Secara Langsung</h2>
+            <p style="max-width: 600px; margin: 10px auto 0; opacity: 0.8;">
+                Selain online, Bumbu Nek Na juga tersedia di berbagai mitra terpercaya di Pontianak & Kubu Raya.
+            </p>
+        </div>
+
+        <div class="location-grid">
+            
+            <div class="location-card">
+                <div class="loc-icon-box">🛒</div>
+                <div class="loc-details">
+                    <h4>Mitra Anda</h4>
+                    <p>Jl. Sultan Hasanuddin No. 151, Sungai Jawi Luar (Pontianak Barat)</p>
+                    <a href="https://goo.gl/maps/search/Mitra+Anda+Pontianak" target="_blank" class="btn-map">
+                        Lihat Lokasi &rarr;
+                    </a>
+                </div>
+            </div>
+
+            <div class="location-card">
+                <div class="loc-icon-box">🏪</div>
+                <div class="loc-details">
+                    <h4>Mitra Mart</h4>
+                    <p>Jl. Sultan Abdurrahman (Kota Baru) & Cabang Lainnya</p>
+                    <a href="https://goo.gl/maps/search/Mitra+Mart+Pontianak" target="_blank" class="btn-map">
+                        Lihat Lokasi &rarr;
+                    </a>
+                </div>
+            </div>
+
+            <div class="location-card">
+                <div class="loc-icon-box">🎁</div>
+                <div class="loc-details">
+                    <h4>Ponti Bage (Ponti Ong)</h4>
+                    <p>Jl. Perdana, Ruko Bali Agung 3 (Pusat Oleh-Oleh)</p>
+                    <a href="https://goo.gl/maps/search/Ponti+Bage+Oleh+Oleh" target="_blank" class="btn-map">
+                        Lihat Lokasi &rarr;
+                    </a>
+                </div>
+            </div>
+
+            <div class="location-card">
+                <div class="loc-icon-box">🛍️</div>
+                <div class="loc-details">
+                    <h4>Komp. Pertokoan PSP</h4>
+                    <p>Jl. Pattimura, Darat Sekip (Pusat Souvenir Pontianak)</p>
+                    <a href="https://goo.gl/maps/search/PSP+Pontianak" target="_blank" class="btn-map">
+                        Lihat Lokasi &rarr;
+                    </a>
+                </div>
+            </div>
+
+            <div class="location-card">
+                <div class="loc-icon-box">✈️</div>
+                <div class="loc-details">
+                    <h4>Bandara Supadio</h4>
+                    <p>Jl. Arteri Supadio, Kubu Raya (Area Keberangkatan)</p>
+                    <a href="https://goo.gl/maps/search/Bandara+Supadio" target="_blank" class="btn-map">
+                        Lihat Lokasi &rarr;
+                    </a>
+                </div>
+            </div>
+
+            <div class="location-card">
+                <div class="loc-icon-box">🏨</div>
+                <div class="loc-details">
+                    <h4>Hotel Mercure</h4>
+                    <p>Jl. Jenderal Ahmad Yani No. 91, Pontianak Tenggara</p>
+                    <a href="https://goo.gl/maps/search/Hotel+Mercure+Pontianak" target="_blank" class="btn-map">
+                        Lihat Lokasi &rarr;
+                    </a>
+                </div>
+            </div>
+
+            <div class="location-card">
+                <div class="loc-icon-box">🏨</div>
+                <div class="loc-details">
+                    <h4>Hotel Borneo</h4>
+                    <p>Jl. Merdeka Barat No. 428, Mariana (Pontianak Kota)</p>
+                    <a href="https://goo.gl/maps/search/Hotel+Borneo+Pontianak" target="_blank" class="btn-map">
+                        Lihat Lokasi &rarr;
+                    </a>
+                </div>
+            </div>
+
+            <div class="location-card card-soon">
+                <span class="badge-soon">Segera Hadir</span>
+                <div class="loc-icon-box" style="background: #e0e0e0; color: #777;">⏳</div>
+                <div class="loc-details">
+                    <h4 style="color: #666;">Hypermart Megamall</h4>
+                    <p>Jl. Jenderal Ahmad Yani (Ayani Megamal)</p>
+                    <span style="font-size: 0.85rem; font-weight: 600; color: var(--secondary);">On Progress</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
 
     <section id="order-area" class="section-padding">
         <div class="container">
